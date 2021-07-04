@@ -8,5 +8,7 @@ import { Observable } from 'rxjs';
 export class LayoutService {
   public isLogged$: Observable<boolean> = this.authService.isLogged$;
 
+  public fullName$: Observable<string> = this.authService.fullName$;
+
   constructor(private readonly authService: AuthService) {}
 }

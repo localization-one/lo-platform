@@ -1,0 +1,27 @@
+<div class="layout-header">
+  <i
+    class="trigger"
+    nz-icon
+    [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+    (click)="collapsed$.emit()"
+  ></i>
+  <div class="layout-header-user">
+    <a nz-dropdown [nzDropdownMenu]="userMenu" class="text-white">
+      {{ fullName }}
+      <i nz-icon nzType="down"></i>
+    </a>
+    <nz-dropdown-menu #userMenu="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item routerLink="/platform/profile">
+          <i nz-icon nzType="user"></i>
+          Profile</li>
+        <li nz-menu-item routerLink="/profile">
+          <i nz-icon nzType="wallet"></i>
+          Wallet</li>
+        <li nz-menu-item (click)="logout$.emit()">
+          <i nz-icon nzType="logout" nzTheme="outline"></i>
+          Logout</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.layout-header {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: space-between;
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+  &-user {
+    a {
+      color: black;
+    }
+  }
+}

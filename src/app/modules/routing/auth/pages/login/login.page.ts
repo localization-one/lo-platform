@@ -4,7 +4,7 @@ import { AuthService, LoginDto } from '@services/auth';
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'lo-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })

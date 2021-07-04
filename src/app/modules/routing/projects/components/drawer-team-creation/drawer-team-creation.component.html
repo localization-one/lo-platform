@@ -1,0 +1,25 @@
+<div class="new-team" [formGroup]="teamGroup" (ngSubmit)="handleSubmit()">
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <lo-modern-input
+        label="Name"
+        placeholder="Name"
+        formControlName="name"
+      ></lo-modern-input>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <lo-modern-input
+        label="Description"
+        placeholder="Description"
+        formControlName="description"
+      ></lo-modern-input>
+    </div>
+  </div>
+  <div nz-row>
+    <button nz-button nzType="primary" type="submit" (click)="handleSubmit()">
+      Create
+    </button>
+  </div>
+</div>

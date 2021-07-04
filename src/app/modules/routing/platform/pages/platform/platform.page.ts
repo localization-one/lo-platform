@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-platform',
+  selector: 'lo-platform',
   templateUrl: './platform.page.html',
   styleUrls: ['./platform.page.scss']
 })

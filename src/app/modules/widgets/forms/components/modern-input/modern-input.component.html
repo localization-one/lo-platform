@@ -1,6 +1,6 @@
 <span [formGroup]="control" nz-tooltip [nzTooltipTitle]="control.value.value">
   <input
-    class="skinny"
+    [ngClass]="className"
     [id]="id"
     type="text"
     ngDefaultControl

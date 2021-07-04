@@ -18,9 +18,9 @@ import { takeUntil } from 'rxjs/operators';
 import { guid, ID } from '@datorama/akita';
 
 @Component({
-  selector: 'app-modern-input',
+  selector: 'lo-modern-input',
   templateUrl: './modern-input.component.html',
-  styleUrls: ['./modern-input.component.scss'],
+  styleUrls: ['./modern-input.component.scss', './top.scss', './left.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -37,6 +37,9 @@ export class ModernInputComponent
   id: ID = guid();
 
   control: FormGroup<{ value: string }>;
+
+  @Input()
+  position: 'left' | 'top' = 'top';
 
   @Input()
   initialValue!: string;
@@ -60,6 +63,15 @@ export class ModernInputComponent
   ngOnChanges(changes: SimpleChanges) {
     if (changes.initialValue && changes.initialValue.firstChange) {
       this.control.patchValue({ value: changes.initialValue.currentValue });
+    }
+  }
+
+  get className(): string {
+    switch (this.position) {
+      case 'left':
+        return 'skinny';
+      case 'top':
+        return 'balloon';
     }
   }
 }

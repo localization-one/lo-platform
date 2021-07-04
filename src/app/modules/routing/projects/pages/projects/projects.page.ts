@@ -3,7 +3,7 @@ import { IProject, ProjectsService } from '@services/projects';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-projects',
+  selector: 'lo-projects',
   templateUrl: './projects.page.html',
   styleUrls: ['./projects.page.scss'],
 })

@@ -6,14 +6,18 @@ import {
   RequestModel,
   RequestType,
 } from '@core/backend';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { IProject } from '@services/projects/interfaces';
 import { ID } from '@datorama/akita';
+import { CreateTeamDto, ITeam } from '@services/teams';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectsService extends BaseApiService {
+  public reload$: Subject<null> = new Subject<null>();
+
   constructor(backendService: BackendService) {
     super(backendService, 'projects');
   }
@@ -42,5 +46,21 @@ export class ProjectsService extends BaseApiService {
         request,
       });
     return this.send<IProject, null>(requestFacade);
+  }
+
+  createProjectTeam(id: ID, teamDto: CreateTeamDto): void {
+    const request: RequestModel<CreateTeamDto> =
+      new RequestModel<CreateTeamDto>({
+        url: this.getFullUrl('teams'),
+        requestBody: teamDto,
+      }).withID(id);
+    const requestFacade: RequestFacadeModel<CreateTeamDto> =
+      new RequestFacadeModel<CreateTeamDto>({
+        requestType: RequestType.post,
+        request,
+      });
+    this.send<ITeam, CreateTeamDto>(requestFacade)
+      .pipe(tap(() => this.reload$.next()))
+      .subscribe();
   }
 }

@@ -6,18 +6,20 @@
         <i nz-icon nzType="save" nz-tooltip nzTooltipTitle="Save changes"></i>
       </button>
     </div>
-    <app-modern-input
+    <lo-modern-input
       label="Name"
       placeholder="Name"
       formControlName="name"
+      position="left"
       [initialValue]="project.name"
-    ></app-modern-input>
-    <app-modern-input
+    ></lo-modern-input>
+    <lo-modern-input
       label="Origin"
       placeholder="Origin"
       formControlName="origin"
+      position="left"
       [initialValue]="project.origin"
-    ></app-modern-input>
+    ></lo-modern-input>
   </div>
 
   <div class="project-teams">
@@ -29,7 +31,14 @@
       >
         <h3 nz-typography>Teams</h3>
       </nz-badge>
-      <button nz-button nzType="primary" nzShape="circle" nz-tooltip nzTooltipTitle="Add new team" (click)="open()">
+      <button
+        nz-button
+        nzType="primary"
+        nzShape="circle"
+        nz-tooltip
+        nzTooltipTitle="Add new team"
+        (click)="open()"
+      >
         <i nz-icon nzType="plus"></i>
       </button>
     </div>
@@ -71,7 +80,6 @@
   </div>
 </div>
 
-
 <nz-drawer
   [nzClosable]="true"
   [nzOffsetX]="childrenVisible ? 180 : 0"
@@ -82,23 +90,8 @@
   [nzContent]="nzDrawerContent"
 >
   <ng-template #nzDrawerContent>
-    <div class="new-team">
-      <div nz-row>
-        <div nz-col nzSpan="24">
-          <app-modern-input
-            label="Name"
-            placeholder="Name"
-          ></app-modern-input>
-        </div>
-      </div>
-      <div nz-row>
-        <div nz-col nzSpan="24">
-          <app-modern-input
-            label="Description"
-            placeholder="Description"
-          ></app-modern-input>
-        </div>
-      </div>
-    </div>
+    <lo-drawer-team-creation
+      [projectId]="projectId$ | async"
+    ></lo-drawer-team-creation>
   </ng-template>
 </nz-drawer>

@@ -4,7 +4,7 @@
 
 <ng-template #authView>
   <nz-layout class="layout">
-    <nz-sider>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
       <div class="logo"></div>
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-menu-item>
@@ -41,9 +41,15 @@
         </li>
       </ul>
     </nz-sider>
-    <nz-layout class="right-layout">
-      <nz-header></nz-header>
-      <app-page-header></app-page-header>
+    <nz-layout class="right-layout" [ngClass]="{ collapsed: isCollapsed }">
+      <nz-header>
+        <lo-layout-header
+          [isCollapsed]="isCollapsed"
+          [fullName]="fullName$ | async"
+          (collapsed$)="handleCollapse()"
+        ></lo-layout-header>
+      </nz-header>
+      <lo-page-header> </lo-page-header>
       <nz-content>
         <div class="inner-content">
           <div [ngTemplateOutlet]="content"></div>

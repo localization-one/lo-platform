@@ -4,12 +4,13 @@ import { IProject } from '@services/projects';
 import { PROJECT_INFO, PROJECT_PROVIDERS } from '../../providers';
 import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { AbsBaseComponent } from '@base/abs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
+import { ID } from '@datorama/akita';
 
 type ProjectDTO = Pick<IProject, 'name' | 'origin'>;
 
 @Component({
-  selector: 'app-project-detailed',
+  selector: 'lo-project-detailed',
   templateUrl: './project-detailed.component.html',
   styleUrls: ['./project-detailed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,6 +21,10 @@ export class ProjectDetailedComponent extends AbsBaseComponent {
     name: new FormControl(''),
     origin: new FormControl(''),
   });
+
+  projectId$: Observable<ID> = this.project$.pipe(
+    map((project: IProject) => project.id)
+  );
 
   constructor(
     @Inject(PROJECT_INFO) readonly project$: Observable<IProject>,
@@ -33,8 +38,6 @@ export class ProjectDetailedComponent extends AbsBaseComponent {
 
   visible = false;
   childrenVisible = false;
-
-  vegetables = ['asparagus', 'bamboo', 'potato', 'carrot', 'cilantro', 'potato', 'eggplant'];
 
   open(): void {
     this.visible = true;

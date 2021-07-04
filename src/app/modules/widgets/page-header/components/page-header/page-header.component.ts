@@ -3,7 +3,7 @@ import { PageHeaderService } from '../../services';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-page-header',
+  selector: 'lo-page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss'],
 })

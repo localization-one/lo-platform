@@ -4,4 +4,6 @@ const loadPlatform = () => import('./platform').then((m) => m.PlatformModule);
 
 const loadProjects = () => import('./projects').then((m) => m.ProjectsModule);
 
-export { loadAuth, loadPlatform, loadProjects };
+const loadProfile = () => import('./profile').then((m) => m.ProfileModule);
+
+export { loadAuth, loadPlatform, loadProjects, loadProfile };
