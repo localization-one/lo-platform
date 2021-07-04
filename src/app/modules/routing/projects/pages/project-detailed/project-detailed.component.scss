@@ -1,0 +1,43 @@
+.project {
+  display: flex;
+  flex-direction: row;
+  &-info {
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &-teams {
+    width: 100%;
+    border-left: 3px solid var(--secondary);
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 15px;
+      margin-right: 15px;
+      button {
+        margin-left: 15px;
+      }
+    }
+    &-list {
+      margin-top: 50px;
+      margin-left: 150px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+    }
+  }
+}
+
+
+.new-team {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 50px;
+}

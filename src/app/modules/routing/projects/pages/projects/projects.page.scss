@@ -1,0 +1,84 @@
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+
+.full-card {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 300px;
+  width: 300px;
+  background: white;
+}
+
+.font-card {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: linear-gradient(45deg, rgba(159, 190, 230, 1) 0%, rgba(223, 234, 238, 1) 100%);
+  padding: 20px 20px;
+  color: white;
+  margin: 0 15px;
+  text-align: center;
+  box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s, transform 0.3s;
+  transition-delay: 0.15s;
+  &.hovered-card {
+    box-shadow: 0 5px 3px -5px rgba(0, 0, 0, 0.3), 0 2px 8px -5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+  p {
+    line-height: 1.4;
+  }
+}
+
+.explore-button {
+  font-size: 0.9em;
+  background: white;
+  width: 80%;
+  color: #a7a7a7;
+  display: inline-block;
+  padding: 1em;
+  margin-top: 2em;
+  border-radius: 5em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.3);
+  transition: color 0.6s, box-shadow 0.3s, transform 0.3s;
+  &:hover {
+    box-shadow: 0 3px 5px -5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+    color: #6f6f6f;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .full-card {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 30px 60px;
+  }
+  .font-card {
+    width: calc(50% - 30px);
+  }
+  .font-description {
+    width: 100%;
+  }
+}
+
+////////////////BACKGROUNDS////////////////
+
+.robotoslab-card {
+  background: url(https://picsum.photos/id/870/536/354?grayscale&blur=2) no-repeat center center;
+  background-size: cover;
+}
+
+////////////////END BACKGROUNDS///////////////

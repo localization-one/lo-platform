@@ -1,0 +1,10 @@
+<span [formGroup]="control" nz-tooltip [nzTooltipTitle]="control.value.value">
+  <input
+    class="skinny"
+    [id]="id"
+    type="text"
+    ngDefaultControl
+    formControlName="value"
+    [placeholder]="placeholder"
+  /><label [for]="id">{{ label }}</label>
+</span>

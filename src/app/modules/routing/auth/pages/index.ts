@@ -1,0 +1,3 @@
+export * from './auth/auth.page';
+export * from './login/login.page';
+export * from './register/register.page';

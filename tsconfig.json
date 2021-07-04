@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -19,12 +19,23 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@base/*": ["app/base/*"],
+      "@core/*": ["app/modules/core/*"],
+      "@services/*": ["app/modules/services/*"],
+      "@widgets/*": ["app/modules/widgets/*"],
+      "@utils/*": ["app/utils/*"],
+      "@loader": ["app/modules/routing/lazy-loader.ts"],
+      "@const": ["app/const"]
+    }
+
   },
   "angularCompilerOptions": {
+    "skipLibCheck": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }

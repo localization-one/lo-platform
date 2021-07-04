@@ -1,0 +1,104 @@
+<div class="project" *ngIf="project$ | async as project">
+  <div class="project-info" *ngIf="projectData" [formGroup]="projectData">
+    <div class="project-info-header">
+      <h3 nz-typography>Project Information</h3>
+      <button nz-button nzType="primary" nzShape="circle">
+        <i nz-icon nzType="save" nz-tooltip nzTooltipTitle="Save changes"></i>
+      </button>
+    </div>
+    <app-modern-input
+      label="Name"
+      placeholder="Name"
+      formControlName="name"
+      [initialValue]="project.name"
+    ></app-modern-input>
+    <app-modern-input
+      label="Origin"
+      placeholder="Origin"
+      formControlName="origin"
+      [initialValue]="project.origin"
+    ></app-modern-input>
+  </div>
+
+  <div class="project-teams">
+    <div class="project-teams-header">
+      <nz-badge
+        [nzCount]="project.teams.length"
+        nz-tooltip
+        nzTooltipTitle="{{ project.teams.length }} inside this project"
+      >
+        <h3 nz-typography>Teams</h3>
+      </nz-badge>
+      <button nz-button nzType="primary" nzShape="circle" nz-tooltip nzTooltipTitle="Add new team" (click)="open()">
+        <i nz-icon nzType="plus"></i>
+      </button>
+    </div>
+    <div class="project-teams-list">
+      <div class="project-teams-element" *ngFor="let team of project.teams">
+        <nz-card
+          style="width: 350px"
+          [nzCover]="coverTemplate"
+          [nzActions]="[actionSetting, actionEdit, actionEllipsis]"
+        >
+          <nz-card-meta
+            [nzTitle]="team.name"
+            [nzDescription]="team.description"
+            [nzAvatar]="avatarTemplate"
+          ></nz-card-meta>
+        </nz-card>
+        <ng-template #avatarTemplate>
+          <nz-avatar
+            nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+          ></nz-avatar>
+        </ng-template>
+        <ng-template #coverTemplate>
+          <img
+            alt="example"
+            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          />
+        </ng-template>
+        <ng-template #actionSetting>
+          <i nz-icon nzType="setting"></i>
+        </ng-template>
+        <ng-template #actionEdit>
+          <i nz-icon nzType="edit"></i>
+        </ng-template>
+        <ng-template #actionEllipsis>
+          <i nz-icon nzType="ellipsis"></i>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<nz-drawer
+  [nzClosable]="true"
+  [nzOffsetX]="childrenVisible ? 180 : 0"
+  [nzWidth]="500"
+  [nzVisible]="visible"
+  (nzOnClose)="close()"
+  nzTitle="Create new team"
+  [nzContent]="nzDrawerContent"
+>
+  <ng-template #nzDrawerContent>
+    <div class="new-team">
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <app-modern-input
+            label="Name"
+            placeholder="Name"
+          ></app-modern-input>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="24">
+          <app-modern-input
+            label="Description"
+            placeholder="Description"
+          ></app-modern-input>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-drawer>

@@ -1,0 +1,9 @@
+<div class="projects">
+  <div class="full-card" *ngFor="let project of projects$ | async">
+    <div class="font-card robotoslab-card">
+      <h3 class="font--robotoslab">{{ project.name }}</h3>
+      <p class="font--roboto">{{ project.description }}</p>
+      <a routerLink="{{project.id}}" class="explore-button">Explore</a>
+    </div>
+  </div>
+</div>
