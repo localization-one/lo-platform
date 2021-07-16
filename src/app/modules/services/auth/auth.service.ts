@@ -41,7 +41,11 @@ export class AuthService extends BaseApiService {
       });
     this.send<any, LoginDto>(requestFacade).subscribe((response) => {
       this.authStore.update({ ...response });
-      this.router.navigate([`/${ROUTES.platform}`]);
+      this.router.navigate([`/${ROUTES.platform}`]).then();
     });
+  }
+
+  public logout(): void {
+    this.authStore.reset();
   }
 }

@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { LayoutService } from '@core/layout/services';
 import { Observable } from 'rxjs';
+import { IMenuItem, MenuService } from '@services/menu';
 
 @Component({
   selector: 'lo-layout-wrapper',
@@ -14,13 +15,20 @@ export class LayoutWrapperComponent {
 
   public fullName$: Observable<string> = this.layoutService.fullName$;
 
+  public menuItems$: Observable<IMenuItem[]> = this.menuService.menuItems$;
+
   constructor(
     private readonly layoutService: LayoutService,
+    private readonly menuService: MenuService,
     private readonly cd: ChangeDetectorRef
   ) {}
 
   handleCollapse(): void {
     this.isCollapsed = !this.isCollapsed;
     this.cd.detectChanges();
+  }
+
+  handleLogout(): void {
+    this.layoutService.logout();
   }
 }
